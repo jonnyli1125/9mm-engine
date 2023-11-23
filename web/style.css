@@ -1,0 +1,263 @@
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  height: 100%;
+  margin: 0;
+}
+
+a {
+  color: white;
+}
+
+#header {
+  height: 50px;
+  line-height: 45px;
+  font-size: 12px;
+  border-bottom: 1px solid #ccc;
+  background-color: #3fa7c0;
+  color: white;
+  text-align: center;
+}
+
+#header .description {
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.content {
+  padding-top: 20px;
+  padding-bottom: 60px;
+  width: calc(min(100vw, 100vh) * 0.7);
+  height: calc(100vh - 71px);
+  margin: 0 auto;
+}
+
+#board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  width: calc(min(100vw, 100vh) * 0.7);
+  height: calc(min(100vw, 100vh) * 0.7);
+  margin: auto;
+  background-color: #fff6e3;
+  border: 1px solid #ccc;
+}
+
+.cell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cell.valid {
+  cursor: pointer;
+}
+
+.cell.valid::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 10%;
+  height: 10%;
+  background-color: #222;
+  border-radius: 50%;
+}
+
+.line {
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-1px);
+}
+
+.line.horizontal {
+  transform: translateY(-1px);
+  width: 0;
+  height: 2px;
+}
+
+.line.vertical {
+  transform: translateX(-1px);
+  width: 2px;
+  height: 0;
+}
+
+.line.horizontal.long {
+  width: calc(100% * 6);
+}
+
+.line.horizontal.med {
+  width: calc(100% * 4);
+}
+
+.line.horizontal.short {
+  width: calc(100% * 2);
+}
+
+.line.vertical.long {
+  height: calc(100% * 6);
+}
+
+.line.vertical.med {
+  height: calc(100% * 4);
+}
+
+.line.vertical.short {
+  height: calc(100% * 2);
+}
+
+img#devilsplan {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 576px) {
+  img#devilsplan {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+#info {
+  padding: 8px 0;
+  font-family: monospace;
+  font-size: 16px;
+  margin: 5px auto;
+  text-align: center;
+  border-radius: 20px;
+  border: 2px dotted #aaa;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#info #messages {
+  display: inline-block;
+}
+
+#info .typed {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing;
+  animation-duration: 0.8s;
+  animation-timing-function: steps(30, end);
+  animation-fill-mode: forwards;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+#info p {
+  margin: 0;
+}
+
+#info p::after {
+  content: '';
+}
+
+#info p.start::after {
+  content: 'Choose a color:';
+}
+
+#info p.white-placement::after {
+  content: 'White to place a piece';
+}
+
+#info p.black-placement::after {
+  content: 'Black to place a piece';
+}
+
+#info p.white-movement::after {
+  content: 'White to move a piece';
+}
+
+#info p.black-movement::after {
+  content: 'Black to move a piece';
+}
+
+#info p.white-removal::after {
+  content: 'White to remove a black piece';
+}
+
+#info p.black-removal::after {
+  content: 'Black to remove a white piece';
+}
+
+#info p.you-won::after {
+  content: 'You won. Try again:';
+}
+
+#info p.you-lost::after {
+  content: 'You lost. Try again:';
+}
+
+#info p.no-moves::after {
+  content: 'No legal moves. Skipping turn...';
+}
+
+#info p.no-connection::after {
+  content: 'No connection to server. Try again later.';
+}
+
+#start-buttons {
+  margin: 6px auto 0;
+
+}
+
+#start-buttons button {
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  height: 40px;
+  width: 100px;
+  line-height: 30px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#start-buttons button#play-black {
+  color: white;
+  background-color: #222;
+}
+
+#start-buttons button#play-white {
+  color: #222;
+  background-color: white;
+}
+
+.piece {
+  position: absolute;
+  width: 7%;
+  height: 7%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+  transition: ease 0.2s;
+}
+
+.piece.black {
+  background-color: #222;
+}
+
+.piece.white {
+  background-color: white;
+  border: 1px solid #ddd;
+}
+
+.piece.highlight {
+  box-shadow: 0 0 16px #dc3545;
+}

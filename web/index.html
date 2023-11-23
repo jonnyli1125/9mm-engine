@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nine Men's Morris</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="devilsplan.ico">
+</head>
+<body>
+<div id="header">
+    <span class="description">Inspired by the Netflix show <a href="https://en.wikipedia.org/wiki/The_Devil%27s_Plan">The Devil's Plan</a>. Learn the rules <a href="https://en.wikipedia.org/wiki/Nine_men%27s_morris">here</a>.</span>
+</div>
+<div class="content">
+    <div id="board">
+        <!-- Row 0 -->
+        <div class="cell valid" data-x="0" data-y="0">
+            <div class="line horizontal long"></div>
+            <div class="line vertical long"></div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="0" data-y="1">
+            <div class="line vertical short"></div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="0" data-y="2">
+            <div class="line vertical long"></div>
+        </div>
+        <!-- Row 1 -->
+        <div class="cell"></div>
+        <div class="cell valid" data-x="1" data-y="0">
+            <div class="line horizontal med"></div>
+            <div class="line vertical med"></div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="1" data-y="1"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="1" data-y="2">
+            <div class="line vertical med"></div>
+        </div>
+        <div class="cell"></div>
+        <!-- Row 2 -->
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="2" data-y="0">
+            <div class="line horizontal short"></div>
+            <div class="line vertical short"></div>
+        </div>
+        <div class="cell valid" data-x="2" data-y="1"></div>
+        <div class="cell valid" data-x="2" data-y="2">
+            <div class="line vertical short"></div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <!-- Row 3 -->
+        <div class="cell valid" data-x="0" data-y="7">
+            <div class="line horizontal short"></div>
+        </div>
+        <div class="cell valid" data-x="1" data-y="7"></div>
+        <div class="cell valid" data-x="2" data-y="7"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="2" data-y="3">
+            <div class="line horizontal short"></div>
+        </div>
+        <div class="cell valid" data-x="1" data-y="3"></div>
+        <div class="cell valid" data-x="0" data-y="3"></div>
+        <!-- Row 4 -->
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="2" data-y="6">
+            <div class="line horizontal short"></div>
+        </div>
+        <div class="cell valid" data-x="2" data-y="5">
+            <div class="line vertical short"></div>
+        </div>
+        <div class="cell valid" data-x="2" data-y="4"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <!-- Row 5 -->
+        <div class="cell"></div>
+        <div class="cell valid" data-x="1" data-y="6">
+            <div class="line horizontal med"></div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="1" data-y="5"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="1" data-y="4"></div>
+        <div class="cell"></div>
+        <!-- Row 6 -->
+        <div class="cell valid" data-x="0" data-y="6">
+            <div class="line horizontal long"></div>
+        </div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="0" data-y="5"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell valid" data-x="0" data-y="4"></div>
+        <!-- Append pieces as overlay divs -->
+    </div>
+    <img src="devilsplan.png" id="devilsplan"/>
+    <div id="info" class="start">
+        <div id="messages">
+            <p class="typed start"></p>
+        </div>
+        <div id="start-buttons">
+            <button id="play-black">Black</button>
+            <button id="play-white">White</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
