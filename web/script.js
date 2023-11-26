@@ -111,8 +111,13 @@ var client = {
   startGame: function(playBlack) {
     this.playerIsBlack = playBlack;
     this.gameStarted = true;
-    this.waitingFor = playBlack ? 'client-placement' : 'server';
-    this.displayMessage('black-placement');
+    if (playBlack) {
+      this.waitingFor = 'client-placement';
+      this.displayMessage('your-turn-placement');
+    } else {
+      this.waitingFor = 'server';
+      this.displayMessage('my-turn-placement');
+    }
     // start websocket connection and send start message to server
     this.websocket = new WebSocket(this.serverUrl);
     this.websocket.addEventListener('message', onMessage);
@@ -143,10 +148,7 @@ var client = {
     board.makeMove(move);
     this.selectedFromSquare = null;
     this.selectedPiece = null;
-    this.websocket.send(JSON.stringify({ 'move': move }), (e) => {
-      onMessage(e);
-      // TODO update info message based on available legal moves
-    });
+    this.websocket.send(JSON.stringify({ 'move': move }), onMessage);
     client.waitingFor = 'server';
   }
 };
@@ -172,13 +174,23 @@ function onMessage(e) {
     console.log('legal_moves', board.legalMoves);
     // if no legal moves, auto-send a null move back to skip this turn
     if (board.legalMoves.length == 0) {
-      setTimeout(() => { client.makeMove(null); }, 1);
+      setTimeout(() => { client.makeMove(null); }, 2);
+      return;
     }
+    if (board.legalMoves[0].from_square == null) {
+      client.waitingFor = 'client-placement';
+      client.displayMessage('your-turn-placement');
+    } else {
+      client.waitingFor = 'client-movement';
+      client.displayMessage('your-turn-movement');
+    }
+    // TODO update info message based on available legal moves. how to determine when to display "my-turn-movement"?
   }
 }
 
 function onBoardClick(e) {
   let square = board.physicalElementToLogical(e.currentTarget);
+  console.log(square);
   if (square == null) return;
   // event handler for clicking an empty square
   let move = null;

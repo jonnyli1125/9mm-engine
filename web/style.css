@@ -171,28 +171,28 @@ img#devilsplan {
   content: 'Choose a color:';
 }
 
-#info p.white-placement::after {
-  content: 'White to place a piece';
+#info p.your-turn-placement::after {
+  content: 'Your turn to place a piece';
 }
 
-#info p.black-placement::after {
-  content: 'Black to place a piece';
+#info p.my-turn-placement::after {
+  content: 'My turn to place a piece';
 }
 
-#info p.white-movement::after {
-  content: 'White to move a piece';
+#info p.your-turn-movement::after {
+  content: 'Your turn to move a piece';
 }
 
-#info p.black-movement::after {
-  content: 'Black to move a piece';
+#info p.my-turn-movement::after {
+  content: 'My turn to move a piece';
 }
 
-#info p.white-removal::after {
-  content: 'White to remove a black piece';
+#info p.your-turn-removal::after {
+  content: 'Remove a piece';
 }
 
-#info p.black-removal::after {
-  content: 'Black to remove a white piece';
+#info p.my-turn-removal::after {
+  content: 'Removing your piece';
 }
 
 #info p.you-won::after {
